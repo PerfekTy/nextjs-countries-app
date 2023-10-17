@@ -13,27 +13,27 @@ interface CountryPageProps {
   };
 }
 
-type Country = {
-  population: any;
-  capital: string;
-  currencies: string[]
-  name: string;
-  flags: {
-    png: string;
-  }
-  languages:string[]
-  nativeName:string;
-  region:string;
-  subregion:string;
-  topLevelDomain:string[];
-  borders:string[];
-}
+// type Country = {
+//   population: any;
+//   capital: string;
+//   currencies: string[]
+//   name: string;
+//   flags: {
+//     png: string;
+//   }
+//   languages:string[]
+//   nativeName:string;
+//   region:string;
+//   subregion:string;
+//   topLevelDomain:string[];
+//   borders:string[];
+// }
 
 const CountryPage = ({ params }: CountryPageProps) => {
   const router = useRouter();
   const { countryName } = params;
   const [loading, setLoading] = useState(true);
-  const [country, setCountry] = useState<Country | null>(null);
+  const [country, setCountry] = useState<any>([]);
 
   const getCountry = useCallback(async () => {
     try {
