@@ -13,27 +13,25 @@ interface CountryPageProps {
   };
 }
 
-// type Country = {
-//   population: any;
-//   capital: string;
-//   currencies: string[]
-//   name: string;
-//   flags: {
-//     png: string;
-//   }
-//   languages:string[]
-//   nativeName:string;
-//   region:string;
-//   subregion:string;
-//   topLevelDomain:string[];
-//   borders:string[];
-// }
+type Country = {
+  population: any;
+  capital: string;
+  currencies: string[]
+  name: string;
+  flag:string;
+  languages:string[]
+  nativeName:string;
+  region:string;
+  subregion:string;
+  topLevelDomain:string[];
+  borders:string[];
+}
 
 const CountryPage = ({ params }: CountryPageProps) => {
   const router = useRouter();
   const { countryName } = params;
   const [loading, setLoading] = useState(true);
-  const [country, setCountry] = useState<any>([]);
+  const [country, setCountry] = useState<Country | null>(null);
 
   const getCountry = useCallback(async () => {
     try {
@@ -81,6 +79,7 @@ const CountryPage = ({ params }: CountryPageProps) => {
     );
   }, [country]);
 
+
   return (
     <div className="m-20 relative flex flex-col justify-center items-center">
       {loading ? (
@@ -97,7 +96,7 @@ const CountryPage = ({ params }: CountryPageProps) => {
             </div>
             <div className="flex flex-col md:flex-row">
               <Image
-                src={country?.flags?.png}
+                src={country?.flag || "https://via.placeholder.com/150x150"}
                 width={500}
                 height={200}
                 alt={`${country?.name} flag`}
