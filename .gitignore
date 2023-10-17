@@ -12,6 +12,7 @@
 *.fig
 /node_modules
 .eslintrc.json
+*.next\
 .next
 
 # Avoid your project being littered with annoying .DS_Store files!
