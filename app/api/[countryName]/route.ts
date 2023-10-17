@@ -7,7 +7,7 @@ export async function GET(req: NextRequest) {
   }
 
   try {
-    const data = fs.readFileSync("./public/data.json", "utf8");
+    const data = fs.readFileSync("/public/data.json", "utf8");
     const parsedData = JSON.parse(data);
 
     const url = new URL(req.url as string);
