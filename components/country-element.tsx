@@ -24,7 +24,7 @@ export const CountryElement = ({ country }: { country: any }) => {
   return (
     <Card
       className="w-full mx-auto dark:bg-dark dark:border-none hover:scale-105 transition cursor-pointer"
-      onClick={() => router.push(`/${country.name}`)}
+      onClick={() => router.push(`/${country.numericCode}`)}
     >
       <CardHeader className="p-0">
         <CardTitle>

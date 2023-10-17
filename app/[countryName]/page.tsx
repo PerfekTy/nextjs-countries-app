@@ -155,15 +155,15 @@ const CountryPage = ({ params }: CountryPageProps) => {
                 </div>
                 <div className="my-10 flex items-center md:justify-start justify-center gap-1">
                   <p className="text-sm">Border Countries:</p>
-                  {country?.borders?.map((border: string) => (
-                    <Button
-                      variant="ghost"
-                      key={border}
-                      onClick={() => router.push(`/${""}`)}
-                    >
-                      {border}
-                    </Button>
-                  ))}
+                  {country?.borders ? country?.borders?.map((border: string) => (
+                      <Button
+                          variant="ghost"
+                          key={border}
+                          onClick={() => router.push(`/${""}`)}
+                      >
+                        {border}
+                      </Button>
+                  )) : <p className="text-sm">No border countries.</p>}
                 </div>
               </div>
             </div>
