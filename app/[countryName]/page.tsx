@@ -13,11 +13,27 @@ interface CountryPageProps {
   };
 }
 
+type Country = {
+  population: string;
+  capital: string;
+  currencies: string[]
+  name: string;
+  flags: {
+    png: string;
+  }
+  languages:string[]
+  nativeName:string;
+  region:string;
+  subregion:string;
+  topLevelDomain:string[];
+  borders:string[];
+}
+
 const CountryPage = ({ params }: CountryPageProps) => {
   const router = useRouter();
   const { countryName } = params;
   const [loading, setLoading] = useState(true);
-  const [country, setCountry] = useState([]);
+  const [country, setCountry] = useState<Country | null>(null);
 
   const getCountry = useCallback(async () => {
     try {
@@ -51,7 +67,7 @@ const CountryPage = ({ params }: CountryPageProps) => {
     }
 
     return country?.currencies?.map(
-      (currency: Record<string, any>) => currency.name,
+      (currency: any) => currency.name,
     );
   }, [country]);
 
@@ -61,7 +77,7 @@ const CountryPage = ({ params }: CountryPageProps) => {
     }
 
     return country?.languages?.map(
-      (language: Record<string, any>) => language.name,
+      (language: any) => language.name,
     );
   }, [country]);
 
@@ -81,22 +97,22 @@ const CountryPage = ({ params }: CountryPageProps) => {
             </div>
             <div className="flex flex-col md:flex-row">
               <Image
-                src={country.flags?.png}
+                src={country?.flags?.png}
                 width={500}
                 height={200}
-                alt={`${country.name} flag`}
+                alt={`${country?.name} flag`}
                 className="border w-[400px] mx-auto md:w-[500px]"
               />
 
               <div className="md:mx-20 text-center md:text-left">
                 <h1 className="font-bold md:text-3xl text-2xl my-4">
-                  {country.name}
+                  {country?.name}
                 </h1>
                 <div className="md:flex md:gap-10">
                   <div className="flex flex-col gap-2">
                     <span className="flex gap-1 items-center md:justify-start justify-center">
                       <p className="font-semibold text-sm">Native Name: </p>
-                      <p className="font-light text-sm">{country.nativeName}</p>
+                      <p className="font-light text-sm">{country?.nativeName}</p>
                     </span>
                     <span className="flex gap-1 items-center md:justify-start justify-center">
                       <p className="font-semibold text-sm">Population: </p>
@@ -104,15 +120,15 @@ const CountryPage = ({ params }: CountryPageProps) => {
                     </span>
                     <span className="flex gap-1 items-center md:justify-start justify-center">
                       <p className="font-semibold text-sm">Region: </p>
-                      <p className="font-light text-sm">{country.region}</p>
+                      <p className="font-light text-sm">{country?.region}</p>
                     </span>
                     <span className="flex gap-1 items-center md:justify-start justify-center">
                       <p className="font-semibold text-sm">Sub Region: </p>
-                      <p className="font-light text-sm">{country.subregion}</p>
+                      <p className="font-light text-sm">{country?.subregion}</p>
                     </span>
                     <span className="flex gap-1 items-center md:justify-start justify-center">
                       <p className="font-semibold text-sm">Capital: </p>
-                      <p className="font-light text-sm">{country.capital}</p>
+                      <p className="font-light text-sm">{country?.capital}</p>
                     </span>
                   </div>
                   <div className="flex flex-col gap-3 mt-2">
@@ -121,26 +137,26 @@ const CountryPage = ({ params }: CountryPageProps) => {
                         Top Level Domain:{" "}
                       </p>
                       <p className="font-light text-sm">
-                        {country.topLevelDomain}
+                        {country?.topLevelDomain}
                       </p>
                     </span>
                     <span className="flex gap-1 items-center md:justify-start justify-center">
                       <p className="font-semibold text-sm">Currencies: </p>
                       <p className="font-light text-sm">
-                        {currencies.join(", ")}
+                        {currencies?.join(", ")}
                       </p>
                     </span>
                     <span className="flex gap-1 items-center md:justify-start justify-center">
                       <p className="font-semibold text-sm">Languages: </p>
                       <p className="font-light text-sm">
-                        {languages.join(", ")}
+                        {languages?.join(", ")}
                       </p>
                     </span>
                   </div>
                 </div>
                 <div className="my-10 flex items-center md:justify-start justify-center gap-1">
                   <p className="text-sm">Border Countries:</p>
-                  {country.borders?.map((border: string) => (
+                  {country?.borders?.map((border: string) => (
                     <Button
                       variant="ghost"
                       key={border}
