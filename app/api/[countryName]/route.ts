@@ -1,7 +1,7 @@
-import { NextApiRequest } from "next";
 import fs from "fs";
+import {NextRequest} from "next/server";
 
-export async function GET(req: NextApiRequest) {
+export async function handler(req: NextRequest) {
   if (req.method !== "GET") {
     return new Response("Method not allowed", { status: 405 });
   }
@@ -23,3 +23,5 @@ export async function GET(req: NextApiRequest) {
     return new Response("Something went wrong", { status: 500 });
   }
 }
+
+export {handler as GET}
