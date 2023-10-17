@@ -14,7 +14,7 @@ interface CountryPageProps {
 }
 
 type Country = {
-  population: string;
+  population: any;
   capital: string;
   currencies: string[]
   name: string;
