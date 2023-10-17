@@ -1,4 +1,4 @@
-// File: C:\NEXT\nextjs-countries\APP\app\api\[countryName]\route.ts
+// File: C:\NEXT\nextjs-countries\nextjs-countries-app\app\api\[countryName]\route.ts
 import * as entry from '../../../../../app/api/[countryName]/route.js'
 import type { NextRequest } from 'next/server.js'
 
