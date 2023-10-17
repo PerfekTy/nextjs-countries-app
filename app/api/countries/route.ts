@@ -1,5 +1,6 @@
 import fs from "fs";
 import {NextRequest} from "next/server";
+import path from "path";
 
 export async function GET(req: NextRequest) {
   if (req.method !== "GET") {
@@ -7,7 +8,8 @@ export async function GET(req: NextRequest) {
   }
 
   try {
-    const data = fs.readFileSync("./public/data.json", "utf8");
+    const dataFilePath = path.join(process.cwd(), 'public/data.json');
+    const data = fs.readFileSync(dataFilePath, "utf8");
     const parsedData = JSON.parse(data);
 
     return new Response(JSON.stringify(parsedData), { status: 200 });
