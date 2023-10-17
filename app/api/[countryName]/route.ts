@@ -1,7 +1,7 @@
 import fs from "fs";
 import {NextRequest} from "next/server";
 
-export async function handler(req: NextRequest) {
+export async function GET(req: NextRequest) {
   if (req.method !== "GET") {
     return new Response("Method not allowed", { status: 405 });
   }
@@ -24,4 +24,3 @@ export async function handler(req: NextRequest) {
   }
 }
 
-export {handler as GET}
