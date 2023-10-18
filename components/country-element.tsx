@@ -23,15 +23,15 @@ export const CountryElement = ({ country }: { country: any }) => {
 
   return (
     <Card
-      className="w-full mx-auto dark:bg-dark dark:border-none hover:scale-105 transition cursor-pointer"
+      className="md:w-full m-5 md:mx-auto dark:bg-dark md:hover:scale-105 hover:scale-[1.02] transition cursor-pointer"
       onClick={() => router.push(`/${country.numericCode}`)}
     >
       <CardHeader className="p-0">
-        <CardTitle>
+        <CardTitle className="w-full h-64">
           <img
             src={country.flags.png}
             alt={country.name}
-            className="w-full rounded-t-lg"
+            className="h-64 w-full rounded-t-lg"
           />
         </CardTitle>
         <CardDescription className="text-black dark:text-white">

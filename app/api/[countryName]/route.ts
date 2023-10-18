@@ -19,9 +19,7 @@ export async function GET(req: NextRequest) {
     const filteredData = parsedData.filter(
       (country: any) => country.numericCode === id,
     );
-
-    console.log(id, filteredData);
-
+    
     return new Response(JSON.stringify(filteredData), { status: 200 });
   } catch (err: any) {
     return new Response(err.message, { status: 500 });

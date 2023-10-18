@@ -6,6 +6,7 @@ import { PuffLoader } from "react-spinners";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
+import CountrySpan from "@/components/country-span";
 
 interface CountryPageProps {
   params: {
@@ -109,51 +110,19 @@ const CountryPage = ({ params }: CountryPageProps) => {
                 </h1>
                 <div className="md:flex md:gap-10">
                   <div className="flex flex-col gap-2">
-                    <span className="flex gap-1 items-center md:justify-start justify-center">
-                      <p className="font-semibold text-sm">Native Name: </p>
-                      <p className="font-light text-sm">{country?.nativeName}</p>
-                    </span>
-                    <span className="flex gap-1 items-center md:justify-start justify-center">
-                      <p className="font-semibold text-sm">Population: </p>
-                      <p className="font-light text-sm">{population}</p>
-                    </span>
-                    <span className="flex gap-1 items-center md:justify-start justify-center">
-                      <p className="font-semibold text-sm">Region: </p>
-                      <p className="font-light text-sm">{country?.region}</p>
-                    </span>
-                    <span className="flex gap-1 items-center md:justify-start justify-center">
-                      <p className="font-semibold text-sm">Sub Region: </p>
-                      <p className="font-light text-sm">{country?.subregion}</p>
-                    </span>
-                    <span className="flex gap-1 items-center md:justify-start justify-center">
-                      <p className="font-semibold text-sm">Capital: </p>
-                      <p className="font-light text-sm">{country?.capital}</p>
-                    </span>
+                    <CountrySpan label="Native Name" content={country?.nativeName}/>
+                    <CountrySpan label="Population" content={population}/>
+                    <CountrySpan label="Region" content={country?.region}/>
+                    <CountrySpan label="Sub Region" content={country?.subregion}/>
+                    <CountrySpan label="Capital" content={country?.capital}/>
                   </div>
                   <div className="flex flex-col gap-3 mt-2">
-                    <span className="flex gap-1 items-center md:justify-start justify-center">
-                      <p className="font-semibold text-sm">
-                        Top Level Domain:{" "}
-                      </p>
-                      <p className="font-light text-sm">
-                        {country?.topLevelDomain}
-                      </p>
-                    </span>
-                    <span className="flex gap-1 items-center md:justify-start justify-center">
-                      <p className="font-semibold text-sm">Currencies: </p>
-                      <p className="font-light text-sm">
-                        {currencies?.join(", ")}
-                      </p>
-                    </span>
-                    <span className="flex gap-1 items-center md:justify-start justify-center">
-                      <p className="font-semibold text-sm">Languages: </p>
-                      <p className="font-light text-sm">
-                        {languages?.join(", ")}
-                      </p>
-                    </span>
+                    <CountrySpan label="Top Level Domain" content={country?.topLevelDomain}/>
+                    <CountrySpan label="Currencies" content={currencies?.join(", ")}/>
+                    <CountrySpan label="Languages" content= {languages?.join(", ")}/>
                   </div>
                 </div>
-                <div className="my-10 flex items-center md:justify-start justify-center gap-1">
+                <div className="my-10 w-full md:flex items-center md:justify-start justify-center gap-1">
                   <p className="text-sm">Border Countries:</p>
                   {country?.borders ? country?.borders?.map((border: string) => (
                       <Button
